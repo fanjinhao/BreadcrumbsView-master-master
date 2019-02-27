@@ -1,0 +1,39 @@
+apply plugin: 'com.android.application'
+
+android {
+  compileSdkVersion 25
+  buildToolsVersion "25.0.0"
+
+  defaultConfig {
+    applicationId "io.victoralbertos.breadcumbsview"
+    minSdkVersion 18
+    targetSdkVersion 25
+    versionCode 1
+    versionName "1.0"
+    testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+  }
+  buildTypes {
+    release {
+      minifyEnabled false
+      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+    }
+  }
+
+  lintOptions {
+    abortOnError false
+  }
+}
+
+dependencies {
+  compile project(':breadcrumbs-view')
+  compile 'com.android.support:appcompat-v7:25.1.1'
+
+  androidTestCompile 'com.android.support.test:runner:0.5'
+  androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.2'
+  androidTestCompile 'com.android.support.test.uiautomator:uiautomator-v18:2.1.2'
+}
+
+configurations.all {
+  resolutionStrategy.force "com.android.support:support-annotations:24.2.1"
+  resolutionStrategy.force 'com.google.code.findbugs:jsr305:3.0.1'
+}
